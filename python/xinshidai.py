@@ -28,7 +28,7 @@ def Mos(name,phone='A',text='B',status='E'):
         mos_list[num] = value
         num += 1
     return mos_list
-def Xsd(name,phone_list,phone='M',text='E',user='D',num=1):
+def Xsd(name,phone_list,phone='G',text='L',user='F',num=1):
     xsd = openpyxl.load_workbook(name).worksheets[0]
     xsd_num = xsd.max_row
     X1,X2,X3 = "%s2" % (phone),"%s2" % (text),"%s2" % (user)
@@ -45,8 +45,10 @@ def Xsd(name,phone_list,phone='M',text='E',user='D',num=1):
         text = xsd_b[y][0].value
         if phone != None:
             for y in range(0,len(phone_list)):
-                if phone == phone_list[y]['phone'] and text in phone_list[y]['text'] and phone_list[y]['status'] != u"发送成功":
+                #if phone == phone_list[y]['phone'] and text in phone_list[y]['text']:
+                if phone == phone_list[y]['phone']:
                     num += 1
+                    print num
                     A,B,C,D = "A%s" % (num),"B%s" % (num),"C%s" % (num),"D%s" % (num)
                     new_xls[A] = phone
                     new_xls[B] = user_list
